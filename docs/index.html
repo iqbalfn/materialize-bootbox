@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8"><title>Materialize Bootbox</title><link rel="stylesheet" href="css/materialize.min.css"><link rel="stylesheet" href="css/prism.css"><link rel="stylesheet" href="css/nouislider.css"><style>.brand-logo{ padding-left: 15px !important; }
+</style></head><body><nav class="nav-extended"><div class="nav-wrapper"><a class="brand-logo" href="#">Materialize Bootbox</a><a class="sidenav-trigger" href="#" data-target="mobile-demo"><i class="material-icons">menu</i></a><ul class="right hide-on-med-and-down" id="nav-mobile"><li><a href="https://github.com/iqbalfn/materialize-bootbox">Github</a></li></ul><ul class="sidenav" id="mobile-demo"><li><a href="https://github.com/iqbalfn/materialize-bootbox">Github</a></li></ul></div><div class="nav-content"><ul class="tabs tabs-transparent"><li class="tab"><a class="active" href="#tab-getting-started">Getting Started</a></li><li class="tab"><a href="#tab-alert">Alert</a></li><li class="tab"><a href="#tab-confirm">Confirm</a></li><li class="tab"><a href="#tab-prompt">Prompt</a></li><li class="tab"><a href="#tab-dialog">Dialog</a></li><li class="tab"><a href="#tab-options">Options</a></li><li class="tab"><a href="#tab-methods">Methods</a></li><li class="tab"><a href="#tab-box">Box</a></li></ul></div></nav><div class="container"><div class="row"><div class="col s12"><div id="tab-getting-started"><h1>Getting Started</h1><h4>Bootbox like plugins for Materialize 1.0.</h4><p>The plugin implement materialize modal and style, so, no more additional css to include.</p><p>This is a plugins. So, just include the js file after materialize, and you're ready to go.</p><pre><code class="language-html">&lt;!-- Compiled and minified CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/css/materialize.min.css"&gt;
+ 
+&lt;!-- Compiled and minified JavaScript --&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"&gt;&lt;/script&gt;
+ 
+&lt;!-- Materialize Bootbox --&gt;
+&lt;script src="static/js/mzbox.min.js"&gt;&lt;/script&gt;</code></pre></div><div id="tab-alert"><h1>Alert</h1><div class="card"><div class="card-content"><span class="card-title">Simple Alert</span><pre><code class="language-js">mzbox.alert('Hello from the box #1');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert With Title</span><pre><code class="language-js">mzbox.alert('Hello from the box #2', 'Oh... Hi');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert With Title and Callback</span><pre><code class="language-js">mzbox.alert('Hello from the box #3', 'Oh... Hi', function(){ alert('Thank You'); });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert With Options</span><pre><code class="language-js">mzbox.alert({
+  title: 'Oh... Hi',
+  message: 'Hello from the box #4'
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-confirm"><h1>Confirm</h1><div class="card"><div class="card-content"><span class="card-title">Simple Confirm</span><pre><code class="language-js">mzbox.confirm('Are you sure #1?');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Confirm With Title</span><pre><code class="language-js">mzbox.confirm('Are you sure #2?', 'Confirmation');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Confirm With Title and Callback</span><pre><code class="language-js">mzbox.confirm('Are you sure #3?', 'Confirmation', function(res){ alert(res); });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Confirm With Options</span><pre><code class="language-js">mzbox.confirm({
+  title: 'Confirmation',
+  message: 'Are you sure #4?',
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-prompt"><h1>Prompt</h1><div class="card"><div class="card-content"><span class="card-title">Simple Prompt</span><pre><code class="language-js">mzbox.prompt('What is your name #1?');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Title</span><pre><code class="language-js">mzbox.prompt('What is your name #2?', 'Identity');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Title and Default Value</span><pre><code class="language-js">mzbox.prompt('What is your name #3?', 'Identity', 'Iqbal Fauzi');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Callback</span><pre><code class="language-js">mzbox.prompt('What is your name #4?', function(res){ alert(res); });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Title and Callback</span><pre><code class="language-js">mzbox.prompt('What is your name #5?', 'Identity', function(res){ alert(res); });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Title, Preset Value and Callback</span><pre><code class="language-js">mzbox.prompt('What is your name #6?', 'Identity', 'Iqbal', function(res){ alert(res); });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Options</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Identity',
+  message: 'What is your name #7?',
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Input Label</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Identity',
+  message: 'What is your name #8?',
+  input: {
+      type: 'text',
+      label: 'Fullname'
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Input Preset Value</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Identity',
+  message: 'What is your name #9?',
+  input: {
+      type: 'text',
+      value: 'Iqbal Fauzi'
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Input Autocomplete</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Company',
+  message: 'What is your company name #10?',
+  input: {
+      type: 'text',
+      options: [
+          { text: "Apple" },
+          { text: "Google" },
+          { text: "Microsoft" },
+          { text: "Samsung" }
+      ]
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Input Tel</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Contact',
+  message: 'What is your phone number #11?',
+  input: {
+      type: 'tel'
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Input URL with Validation</span><p>The validation here implement MaterializeCSS validation that
+validate the input on user leave focus from the input.</p><pre><code class="language-js">mzbox.prompt({
+  title: 'Contact',
+  message: 'What is your website #12?',
+  input: {
+      type: 'url'
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Textarea</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Contact',
+  message: 'What is your website #13?',
+  input: {
+      type: 'textarea',
+      label: 'About You',
+      value: 'lorem\nipsum\nsit\ndolor\namet'
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Select</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Contact',
+  message: 'What is your city #14?',
+  attrs: {
+      style: 'height:450px',
+      class: 'modal-fixed-footer'
+  },
+  input: {
+      type: 'select',
+      label: 'Your City',
+      options: [
+          {
+              text : 'Jakarta',
+              value: 'jakarta',
+              group: 'DKI Jakarta',   // optional
+              icon : 'http://via.placeholder.com/40x40' // optional
+          },
+          {
+              text : 'Bogor',
+              value: 'bogor',
+              group: 'Jawa Barat',   // optional
+              icon : 'http://via.placeholder.com/40x40' // optional
+          },
+          {
+              text : 'Bandung',
+              value: 'bandung',
+              group: 'Jawa Barat',   // optional
+              icon : 'http://via.placeholder.com/40x40' // optional
+          }
+      ]
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Select Multiple Value</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Contact',
+  message: 'What is your provider #15?',
+  attrs: {
+      style: 'height:450px',
+      class: 'modal-fixed-footer'
+  },
+  input: {
+      type: 'select',
+      label: 'Your City',
+      attrs: {
+          multiple: true
+      },
+      value: ['simpati', 'im3'],
+      options: [
+          {
+              text : 'Simpati',
+              value: 'simpati'
+          },
+          {
+              text : 'XL',
+              value: 'xl'
+          },
+          {
+              text : 'IM3',
+              value: 'im3'
+          },
+          {
+              text : '3',
+              value: '3'
+          }
+      ]
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With HTML5 Range</span><p> This element is not renderred by MaterializeCSS automatically.
+And no way to tell MaterializeCSS to render it for now.</p><pre><code class="language-js">mzbox.prompt({
+  title: 'Identity',
+  message: 'How old are you #16?',
+  input: {
+      type: 'range',
+      attrs: {
+          min: 25,
+          max: 70
+      },
+      value: '30'
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Slider</span><p>Please refer to 
+ <a href="http://next.materializecss.com/range.html">MaterializeCSS Range</a>
+for more information about various options and implemention. As
+this element require manual installation for js and css of
+ <code>noUiSlider</code>.</p><pre><code class="language-js">mzbox.prompt({
+  title: 'Range',
+  message: 'How far is somewhere from your location #17?',
+  input: {
+      type: 'slider',
+      value: '30',
+      instance: {
+          start: [20, 80],
+          connect: true,
+          step: 1,
+          orientation: 'horizontal',
+          range: {
+              min: 0,
+              max: 100
+          },
+          format: wNumb({
+              decimals: 0
+          })
+      }
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Radio</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Gender',
+  message: 'Please be in the options #18?',
+  input: {
+      type: 'radio',
+      value: 4,
+      options: [
+          { text: 'Male', value: 1 },
+          { text: 'Female', value: 2 },
+          { text: 'Apache Helicopter', value: 3 },
+          { text: 'Undefined', value: 4 }
+      ]
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Checkbox</span><pre><code class="language-js">mzbox.prompt({
+  title: 'Drink',
+  message: 'What do you drink #19?',
+  input: {
+      type: 'checkbox',
+      value: [1,3],
+      options: [
+          { text: 'Coca Cola', value: 1 },
+          { text: 'Sprite', value: 2 },
+          { text: 'Fanta', value: 3 },
+          { text: 'Teh Pucuk', value: 4 }
+      ]
+  },
+  callback: function(res){
+      alert(res);
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-dialog"><h1>Dialog</h1><p>All box methods is calling this method internally.</p><div class="card"><div class="card-content"><span class="card-title">Simple Dialog</span><pre><code class="language-js">mzbox.dialog({
+  message: 'Cool hah #1?'
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert like dialog</span><pre><code class="language-js">mzbox.dialog({
+  title: 'Im Alert',
+  message: 'Cool hah #2?',
+  buttons: {
+      ok: {
+          label: 'OK'
+      }
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Confirm like dialog</span><pre><code class="language-js">mzbox.dialog({
+  title: 'Confirmation',
+  message: 'Are you sure #3?',
+  callback: function(res){ alert(res); },
+  buttons: {
+      cancel: {
+          label: 'CANCEL'
+      },
+      confirm: {
+          label: 'CONFIRM'
+      }
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt like dialog</span><pre><code class="language-js">mzbox.dialog({
+  title: 'Information',
+  message: 'Your name please #3?',
+  callback: function(res){ alert(res); },
+  input: {
+      type: 'text',
+      label: 'Fullname'
+  },
+  buttons: {
+      cancel: {
+          label: 'CANCEL'
+      },
+      confirm: {
+          label: 'CONFIRM'
+      }
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Blocked Progress</span><p>The 
+<code>ds</code>
+function is an for demo only internal function so the html not
+renderred by browser for syntax highlighter purpose, while
+<code>mzbox</code>
+know them as html.</p><pre><code class="language-js">let box = mzbox.dialog({
+  dismissible: false,
+  message: ds('&lt;div class="progress"&gt;&lt;div class="indeterminate"&gt;&lt;/div&gt;&lt;/div&gt;')
+});
+ 
+setTimeout(function(box){
+  box.close();
+}, 3000, box);</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-options"><h1>Options</h1><table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Target</th><th>Description</th></tr></thead><tbody><tr><td><code>animate</code></td><td><code>boolean</code></td><td><code>true</code></td><td><code>*</code></td><td>Show animation on show/hide the box modal.</td></tr><tr><td><code>attrs</code></td><td><code>object</code></td><td><code>null</code></td><td><code>*</code></td><td>Additional attribute to add to the
+<code>.modal</code>
+element. Where the key of the object is the attribute name, and the value is the attribute value.</td></tr><tr><td><code>buttons</code></td><td><code>object</code></td><td><code>'vary'</code></td><td><code>dialog</code></td><td> The box buttons. Please use below structure to define the buttons:<pre><code class="language-js">{
+  "[name]": {
+      "label": "[LABEL]",
+      "attrs": {
+          "class": "[CLASSNAME]"
+      },
+      "callback": function "[CALLBACK]"(){}
+  },
+  ...
+}</code></pre>You're free to use any value for The
+<code>"[name]"</code>
+, but using name
+<code>confirm</code>
+or
+<code>cancel</code>
+will effect box 
+<code>callback</code>
+. The 
+<code>"label"</code>
+property will use translation if exists, or the value it self if not.</td></tr><tr><td><code>callback</code></td><td><code>function</code></td><td><code>null</code></td><td><code>*</code></td><td> <The>callback function to call on modal closed. The first argument of the function are</The><ol><li> <code>null</code>
+for
+ <code>alert</code></li><li> <code>true</code>
+or
+ <code>false</code>
+for
+ <code>confirm</code></li><li>user provided value for
+<code>prompt</code></li><li> one of above for 
+ <code>dialog</code></li><li><code>undefined</code>
+if user dismiss the modal by clicking backdrop or
+pressing 
+ <code>ESC</code> 
+key</li></ol></td></tr><tr><td><code>dismissible</code></td><td><code>boolean</code></td><td><code>true</code></td><td><code>*</code></td><td>Allow modal to be dismissed by keyboard or overlay click.</td></tr><tr><td><code>input</code></td><td><code>object</code></td><td><code>null</code></td><td><code>prompt|dialog</code></td><td> <The>input box options. Please use below structure to define this value:</The><pre><code class="language-js">{
+  // The input type, it can be:
+  // - any of input type
+  // - textarea
+  // - select 
+  // - checkbox
+  // - radio
+  "type": "text",
+ 
+  // additional attribute to add to the
+  // input.
+  "attrs": {
+      "class": "red-text"
+  },
+ 
+  // - list of checkbox, radio, select options
+  // - autocomplete for input type
+  "options": [
+      {
+          "group": "Asia",
+          "icon": "http://to/image.jpg",
+          "text": "Options #1",
+          "value": "1"
+      },
+      ...
+  ],
+  
+  // materialize form instance options
+  "instance": {
+  },
+ 
+  // preset value
+  "value": null
+}</code></pre></td></tr><tr><td><code>init</code></td><td><code>function</code></td><td><code>null</code></td><td><code>*</code></td><td>The box modal ready callback function.</td></tr><tr><td><code>locale</code></td><td><code>string</code></td><td><code>'en'</code></td><td><code>*</code></td><td>Translation to use for translating box buttons.</td></tr><tr><td><code>message</code></td><td><code>string</code></td><td><code>''</code></td><td><code>*</code></td><td>The dialog message text, it also accept html.</td></tr><tr><td><code>title</code></td><td><code>string</code></td><td><code>''</code></td><td><code>*</code></td><td>The dialog title text, it also accept html.</td></tr></tbody></table></div><div id="tab-methods"><h1>Methods</h1><div class="card"><div class="card-content"><span class="card-title"><code>addLocale(name, translation)</code></span><pre><code class="language-js">/**
+ * @param string name The language name.
+ * @param object translation key-value pair of translation.
+ * @return object mzbox
+ */</code></pre><p>Add new translation to the system translation. List of words to be exists: 
+<code>OK, CONFIRM, CANCEL</code>.
+This method is also used to replace exists translation.</p><pre><code class="language-js">mzbox.addLocale('es', {
+  OK: 'OK',
+  CANCEL: 'Cancelar',
+  CONFIRM: 'Aceptar'
+});</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>alert(message, title, callback)</code></span><pre><code class="language-js">/**
+ * @param object options The alert options.
+ *
+ * @param string message The box message.
+ * @param string title The box title.
+ * @param function callback The on close callback function.
+ *
+ * @return object box
+ */</code></pre><p>Show standart alert.</p><pre><code class="language-js">let message  = 'Hello from the box';
+let title    = 'Oh... Hi!';
+let callback = function(){ alert('Thankyou'); }
+ 
+mzbox.alert(message, title, callback);
+// mzbox.alert(message);
+// mzbox.alert(message, title);
+// mzbox.alert(message, callback);
+// mzbox.alert(message, title, callback);
+// mzbox.alert({message, title, callback});</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>confirm(message, title, callback)</code></span><pre><code class="language-js">/**
+ * @param object options The confirm options.
+ * 
+ * @param string message The box message.
+ * @param string title The box title.
+ * @param function callback The on close callback function.
+ *
+ * @return object box
+ */</code></pre><p>Show standart confirm.</p><pre><code class="language-js">let message  = 'Are you sure about that?';
+let title    = 'Confirmation';
+let callback = function(res){ 
+  if(!res)
+      alert('Uch...');
+  else
+      alert('Thankyou');
+  };
+ 
+mzbox.confirm(message, title, callback);
+// mzbox.confirm(message);
+// mzbox.confirm(message, title);
+// mzbox.confirm(message, callback);
+// mzbox.confirm(message, title, callback);
+// mzbox.confirm({message, title, callback});</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>dialog(options)</code></span><pre><code class="language-js">/**
+ * @param object options Dialog options
+ * @return object box
+ */</code></pre><p>Show custom dialog. All box methods ( 
+<code>alert, confirm, prompt</code>
+) basically call this method internally.</p><pre><code class="language-js">mzbox.dialog({
+  title: 'Oh... Hi',
+  message: 'Alert like dialog from custom dialog',
+  input: null,
+  buttons: {
+      ok: {
+          label: 'OK'
+      }
+  }
+});</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>prompt(message, title, value, callback)</code></span><pre><code class="language-js">/**
+* @param object options The prompt options.
+*
+* @param string message The box message.
+* @param string title The box title.
+* @param mixed value The input value.
+* @param function callback The on close callback function.
+* 
+* @return object box
+*/</code></pre><p>Show standart prompt.</p><pre><code class="language-js">let message  = 'What is your name?';
+let title    = 'Identity';
+let value    = 'Iqbal Fauzi';
+let callback = function(res){ 
+  if(!res)
+      alert('No value?');
+  else
+      alert('Your name is ' + res);
+  }
+ 
+mzbox.prompt(message, title, value, callback);
+// mzbox.prompt(message);
+// mzbox.prompt(message, title);
+// mzbox.prompt(message, callback);
+// mzbox.prompt(message, title, callback);
+// mzbox.prompt(message, title, value);
+// mzbox.prompt(message, title, value, callback);
+// mzbox.prompt({message, title, value, callback});</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>removeLocale(name)</code></span><pre><code class="language-js">/**
+ * @param string The language name.
+ * @return object mzbox
+ */</code></pre><p>Remove exists translation.</p><pre><code class="language-js">mzbox.removeLocale('id');</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>setDefaults(options)</code></span><pre><code class="language-js">/**
+ * @param object The key-value pair of option to set.
+ * @return object mzbox
+ */</code></pre><p>Set default options.</p><pre><code class="language-js">mzbox.setDefaults({
+  title: 'MZBox',
+  locale: 'id',
+  ...
+});</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title"><code>setLocale(name)</code></span><pre><code class="language-js">/**
+ * @param string The language name.
+ * @return object mzbox
+ */</code></pre><p>Set default language to use.</p><pre><code class="language-js">mzbox.setLocale('id');</code></pre></div></div></div><div id="tab-box"><h1>Box Object</h1><p>This object is the object that returned by calling method
+<code>alert</code>,
+<code>confirm</code>,
+<code>dialog</code>,
+
+and
+<code>prompt</code>.</p><div class="card"><div class="card-content"><span class="card-title">close()</span><p>This is the only public method of each box for now. It close
+the box and remove the element related to the box.</p><pre><code class="language-js">let box = mzbox.alert('Hello from the box #2', 'Oh... Hi');
+ 
+setTimeout(function(box){
+    box.close();
+}, 1000, box);</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">element</span><p>This property hold related 
+<code>.modal</code>
+element.</p><pre><code class="language-js">let box = mzbox.alert('Awesome');
+box.element;</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title">input</span><p>This property hold related input element. It can be array of
+the object for input type 
+ <code>checkbox</code>
+and
+ <code>radio</code>.</p><pre><code class="language-js">let box = mzbox.prompt('Awesome');
+box.input;</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title">instance</span><p>This property hold the modal instance of materialize.</p><pre><code class="language-js">let box = mzbox.alert('Awesome');
+box.instance; // M.Modal instance</code></pre></div></div><div class="card"><div class="card-content"><span class="card-title">options</span><p>List of box options.</p><pre><code class="language-js">let box = mzbox.alert('Awesome');
+box.options;</code></pre></div></div></div></div></div></div><script src="js/materialize.min.js"></script><script src="js/nouislider.min.js"></script><script src="js/mzbox.min.js"></script><script src="js/prism.js" data-manual></script><script>new M.Tabs(document.querySelector('.tabs'));
+
+function ds(str){
+    return str.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
+}
+
+document.querySelectorAll('.card').forEach(e => {
+  let btn = e.querySelector('.card-action > a');
+  let src = e.querySelector('.language-js');
+  
+  if(!btn || !src)
+      return;
+ 
+  let code = src.innerHTML;
+  btn.onclick = function(){
+      try{ eval(code) }catch(e){}
+      return false;
+  }
+});
+
+Prism.highlightAll();</script></body></html>

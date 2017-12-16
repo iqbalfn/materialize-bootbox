@@ -1,0 +1,44 @@
+#tab-confirm
+    h1 Confirm
+    
+    .card
+        .card-content
+            span.card-title Simple Confirm
+            pre
+                code.language-js
+                    | mzbox.confirm('Are you sure #1?');
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Confirm With Title
+            pre
+                code.language-js
+                    | mzbox.confirm('Are you sure #2?', 'Confirmation');
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Confirm With Title and Callback
+            pre
+                code.language-js
+                    | mzbox.confirm('Are you sure #3?', 'Confirmation', function(res){ alert(res); });
+        .card-action
+            a(href="#") Try Me!
+        
+    .card
+        .card-content
+            span.card-title Confirm With Options
+            pre
+                code.language-js
+                    | mzbox.confirm({
+                    |   title: 'Confirmation',
+                    |   message: 'Are you sure #4?',
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        .card-action
+            a(href="#") Try Me!

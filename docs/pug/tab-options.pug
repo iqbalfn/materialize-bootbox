@@ -1,0 +1,227 @@
+#tab-options
+    h1 Options
+    
+    table
+        thead
+            tr
+                th Name
+                th Type
+                th Default
+                th Target
+                th Description
+        tbody
+            tr
+                td
+                    code animate
+                td
+                    code boolean
+                td
+                    code true
+                td
+                    code *
+                td Show animation on show/hide the box modal.
+            tr
+                td
+                    code attrs
+                td
+                    code object
+                td
+                    code null
+                td
+                    code *
+                td
+                    | Additional attribute to add to the
+                    |
+                    code .modal
+                    |
+                    | element. Where the key of the object is the attribute name, and the value is the attribute value.
+            tr
+                td
+                    code buttons
+                td
+                    code object
+                td
+                    code 'vary'
+                td
+                    code dialog
+                td 
+                    | The box buttons. Please use below structure to define the buttons:
+                    pre
+                        code.language-js
+                            | {
+                            |   "[name]": {
+                            |       "label": "[LABEL]",
+                            |       "attrs": {
+                            |           "class": "[CLASSNAME]"
+                            |       },
+                            |       "callback": function "[CALLBACK]"(){}
+                            |   },
+                            |   ...
+                            | }
+                    | You're free to use any value for The
+                    |
+                    code "[name]"
+                    |
+                    | , but using name
+                    |
+                    code confirm
+                    |
+                    | or
+                    |
+                    code cancel
+                    |
+                    | will effect box 
+                    |
+                    code callback
+                    |
+                    | . The 
+                    |
+                    code "label"
+                    |
+                    | property will use translation if exists, or the value it self if not.
+                
+            tr
+                td
+                    code callback
+                td
+                    code function
+                td
+                    code null
+                td
+                    code *
+                td 
+                    The callback function to call on modal closed. The first argument of the function are
+                    
+                    ol
+                        li 
+                            code null
+                            |
+                            | for
+                            | 
+                            code alert
+                        li 
+                            code true
+                            |
+                            | or
+                            | 
+                            code false
+                            |
+                            | for
+                            | 
+                            code confirm
+                        li
+                            | user provided value for
+                            |
+                            code prompt
+                        li 
+                            | one of above for 
+                            | 
+                            code dialog
+                        li
+                            code undefined
+                            |
+                            | if user dismiss the modal by clicking backdrop or
+                            | pressing 
+                            | 
+                            code ESC
+                            | 
+                            | key
+            tr
+                td
+                    code dismissible
+                td
+                    code boolean
+                td
+                    code true
+                td
+                    code *
+                td Allow modal to be dismissed by keyboard or overlay click.
+            
+            
+            tr
+                td
+                    code input
+                td
+                    code object
+                td
+                    code null
+                td
+                    code prompt|dialog
+                td 
+                    The input box options. Please use below structure to define this value:
+                    pre
+                        code.language-js
+                            | {
+                            |   // The input type, it can be:
+                            |   // - any of input type
+                            |   // - textarea
+                            |   // - select 
+                            |   // - checkbox
+                            |   // - radio
+                            |   "type": "text",
+                            | 
+                            |   // additional attribute to add to the
+                            |   // input.
+                            |   "attrs": {
+                            |       "class": "red-text"
+                            |   },
+                            | 
+                            |   // - list of checkbox, radio, select options
+                            |   // - autocomplete for input type
+                            |   "options": [
+                            |       {
+                            |           "group": "Asia",
+                            |           "icon": "http://to/image.jpg",
+                            |           "text": "Options #1",
+                            |           "value": "1"
+                            |       },
+                            |       ...
+                            |   ],
+                            |   
+                            |   // materialize form instance options
+                            |   "instance": {
+                            |   },
+                            | 
+                            |   // preset value
+                            |   "value": null
+                            | }
+            tr
+                td
+                    code init
+                td
+                    code function
+                td
+                    code null
+                td
+                    code *
+                td The box modal ready callback function.
+            tr
+                td
+                    code locale
+                td
+                    code string
+                td
+                    code 'en'
+                td
+                    code *
+                td Translation to use for translating box buttons.
+            tr
+                td
+                    code message
+                td
+                    code string
+                td
+                    code ''
+                td
+                    code *
+                td The dialog message text, it also accept html.
+            tr
+                td
+                    code title
+                td
+                    code string
+                td
+                    code ''
+                td
+                    code *
+                td The dialog title text, it also accept html.

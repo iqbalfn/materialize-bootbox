@@ -1,0 +1,97 @@
+#tab-box
+    h1 Box Object
+    
+    p
+        | This object is the object that returned by calling method
+        |
+        code alert
+        | ,
+        |
+        code confirm
+        | ,
+        |
+        code dialog
+        | ,
+        |
+        | and
+        |
+        code prompt
+        | .
+    
+    .card
+        .card-content
+            span.card-title close()
+            
+            p
+                | This is the only public method of each box for now. It close
+                | the box and remove the element related to the box.
+            
+            pre
+                code.language-js
+                    | let box = mzbox.alert('Hello from the box #2', 'Oh... Hi');
+                    | 
+                    | setTimeout(function(box){
+                    |     box.close();
+                    | }, 1000, box);
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title element
+            
+            p
+                | This property hold related 
+                |
+                code .modal
+                |
+                | element.
+            
+            pre
+                code.language-js
+                    | let box = mzbox.alert('Awesome');
+                    | box.element;
+    
+    .card
+        .card-content
+            span.card-title input
+            
+            p
+                | This property hold related input element. It can be array of
+                | the object for input type 
+                | 
+                code checkbox
+                |
+                | and
+                | 
+                code radio
+                | .
+            
+            pre
+                code.language-js
+                    | let box = mzbox.prompt('Awesome');
+                    | box.input;
+                    
+    .card
+        .card-content
+            span.card-title instance
+            
+            p
+                | This property hold the modal instance of materialize.
+            
+            pre
+                code.language-js
+                    | let box = mzbox.alert('Awesome');
+                    | box.instance; // M.Modal instance
+                    
+    .card
+        .card-content
+            span.card-title options
+            
+            p
+                | List of box options.
+            
+            pre
+                code.language-js
+                    | let box = mzbox.alert('Awesome');
+                    | box.options;

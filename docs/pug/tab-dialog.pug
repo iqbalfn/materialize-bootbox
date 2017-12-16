@@ -1,0 +1,106 @@
+#tab-dialog
+    h1 Dialog
+    
+    p All box methods is calling this method internally.
+        
+    .card
+        .card-content
+            span.card-title Simple Dialog
+            pre
+                code.language-js
+                    | mzbox.dialog({
+                    |   message: 'Cool hah #1?'
+                    | });
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Alert like dialog
+            pre
+                code.language-js
+                    | mzbox.dialog({
+                    |   title: 'Im Alert',
+                    |   message: 'Cool hah #2?',
+                    |   buttons: {
+                    |       ok: {
+                    |           label: 'OK'
+                    |       }
+                    |   }
+                    | });
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Confirm like dialog
+            pre
+                code.language-js
+                    | mzbox.dialog({
+                    |   title: 'Confirmation',
+                    |   message: 'Are you sure #3?',
+                    |   callback: function(res){ alert(res); },
+                    |   buttons: {
+                    |       cancel: {
+                    |           label: 'CANCEL'
+                    |       },
+                    |       confirm: {
+                    |           label: 'CONFIRM'
+                    |       }
+                    |   }
+                    | });
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Prompt like dialog
+            pre
+                code.language-js
+                    | mzbox.dialog({
+                    |   title: 'Information',
+                    |   message: 'Your name please #3?',
+                    |   callback: function(res){ alert(res); },
+                    |   input: {
+                    |       type: 'text',
+                    |       label: 'Fullname'
+                    |   },
+                    |   buttons: {
+                    |       cancel: {
+                    |           label: 'CANCEL'
+                    |       },
+                    |       confirm: {
+                    |           label: 'CONFIRM'
+                    |       }
+                    |   }
+                    | });
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Blocked Progress
+            
+            p
+                | The 
+                |
+                code ds
+                |
+                | function is an for demo only internal function so the html not
+                | renderred by browser for syntax highlighter purpose, while
+                |
+                code mzbox
+                |
+                | know them as html.
+            pre
+                code.language-js
+                    | let box = mzbox.dialog({
+                    |   dismissible: false,
+                    |   message: ds('&lt;div class="progress"&gt;&lt;div class="indeterminate"&gt;&lt;/div&gt;&lt;/div&gt;')
+                    | });
+                    | 
+                    | setTimeout(function(box){
+                    |   box.close();
+                    | }, 3000, box);
+        .card-action
+            a(href="#") Try Me!

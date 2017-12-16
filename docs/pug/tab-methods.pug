@@ -1,0 +1,219 @@
+#tab-methods
+    h1 Methods
+
+    .card
+        .card-content
+            span.card-title
+                code addLocale(name, translation)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param string name The language name.
+                    |  * @param object translation key-value pair of translation.
+                    |  * @return object mzbox
+                    |  */
+            
+            p
+                | Add new translation to the system translation. List of words to be exists: 
+                |
+                code OK, CONFIRM, CANCEL
+                | .
+                | This method is also used to replace exists translation.
+            
+            pre
+                code.language-js
+                    | mzbox.addLocale('es', {
+                    |   OK: 'OK',
+                    |   CANCEL: 'Cancelar',
+                    |   CONFIRM: 'Aceptar'
+                    | });
+        
+    .card
+        .card-content
+            span.card-title
+                code alert(message, title, callback)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param object options The alert options.
+                    |  *
+                    |  * @param string message The box message.
+                    |  * @param string title The box title.
+                    |  * @param function callback The on close callback function.
+                    |  *
+                    |  * @return object box
+                    |  */
+            
+            p Show standart alert.
+            
+            pre
+                code.language-js
+                    | let message  = 'Hello from the box';
+                    | let title    = 'Oh... Hi!';
+                    | let callback = function(){ alert('Thankyou'); }
+                    | 
+                    | mzbox.alert(message, title, callback);
+                    | // mzbox.alert(message);
+                    | // mzbox.alert(message, title);
+                    | // mzbox.alert(message, callback);
+                    | // mzbox.alert(message, title, callback);
+                    | // mzbox.alert({message, title, callback});
+
+    .card
+        .card-content
+            span.card-title
+                code confirm(message, title, callback)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param object options The confirm options.
+                    |  * 
+                    |  * @param string message The box message.
+                    |  * @param string title The box title.
+                    |  * @param function callback The on close callback function.
+                    |  *
+                    |  * @return object box
+                    |  */
+            
+            p Show standart confirm.
+            
+            pre
+                code.language-js
+                    | let message  = 'Are you sure about that?';
+                    | let title    = 'Confirmation';
+                    | let callback = function(res){ 
+                    |   if(!res)
+                    |       alert('Uch...');
+                    |   else
+                    |       alert('Thankyou');
+                    |   };
+                    | 
+                    | mzbox.confirm(message, title, callback);
+                    | // mzbox.confirm(message);
+                    | // mzbox.confirm(message, title);
+                    | // mzbox.confirm(message, callback);
+                    | // mzbox.confirm(message, title, callback);
+                    | // mzbox.confirm({message, title, callback});
+
+    .card
+        .card-content
+            span.card-title
+                code dialog(options)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param object options Dialog options
+                    |  * @return object box
+                    |  */
+            p
+                | Show custom dialog. All box methods ( 
+                |
+                code alert, confirm, prompt
+                |
+                | ) basically call this method internally.
+            
+            pre
+                code.language-js
+                    | mzbox.dialog({
+                    |   title: 'Oh... Hi',
+                    |   message: 'Alert like dialog from custom dialog',
+                    |   input: null,
+                    |   buttons: {
+                    |       ok: {
+                    |           label: 'OK'
+                    |       }
+                    |   }
+                    | });
+
+    .card
+        .card-content
+            span.card-title
+                code prompt(message, title, value, callback)
+            pre
+                code.language-js
+                    | /**
+                    | * @param object options The prompt options.
+                    | *
+                    | * @param string message The box message.
+                    | * @param string title The box title.
+                    | * @param mixed value The input value.
+                    | * @param function callback The on close callback function.
+                    | * 
+                    | * @return object box
+                    | */
+            
+            p Show standart prompt.
+            
+            pre
+                code.language-js
+                    | let message  = 'What is your name?';
+                    | let title    = 'Identity';
+                    | let value    = 'Iqbal Fauzi';
+                    | let callback = function(res){ 
+                    |   if(!res)
+                    |       alert('No value?');
+                    |   else
+                    |       alert('Your name is ' + res);
+                    |   }
+                    | 
+                    | mzbox.prompt(message, title, value, callback);
+                    | // mzbox.prompt(message);
+                    | // mzbox.prompt(message, title);
+                    | // mzbox.prompt(message, callback);
+                    | // mzbox.prompt(message, title, callback);
+                    | // mzbox.prompt(message, title, value);
+                    | // mzbox.prompt(message, title, value, callback);
+                    | // mzbox.prompt({message, title, value, callback});
+
+    .card
+        .card-content
+            span.card-title
+                code removeLocale(name)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param string The language name.
+                    |  * @return object mzbox
+                    |  */
+            
+            p Remove exists translation.
+            
+            pre
+                code.language-js mzbox.removeLocale('id');
+
+    .card
+        .card-content
+            span.card-title
+                code setDefaults(options)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param object The key-value pair of option to set.
+                    |  * @return object mzbox
+                    |  */
+            
+            p Set default options.
+            
+            pre
+                code.language-js
+                    | mzbox.setDefaults({
+                    |   title: 'MZBox',
+                    |   locale: 'id',
+                    |   ...
+                    | });
+
+    .card
+        .card-content
+            span.card-title
+                code setLocale(name)
+            pre
+                code.language-js
+                    | /**
+                    |  * @param string The language name.
+                    |  * @return object mzbox
+                    |  */
+            
+            p Set default language to use.
+            
+            pre
+                code.language-js mzbox.setLocale('id');

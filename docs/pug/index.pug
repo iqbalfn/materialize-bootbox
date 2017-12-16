@@ -1,0 +1,65 @@
+doctype html
+html(lang="en-US")
+    
+    head
+        meta(charset="utf-8")
+        title Materialize Bootbox
+        link(rel="stylesheet" href="css/materialize.min.css")
+        link(rel="stylesheet" href="css/prism.css")
+        link(rel="stylesheet" href="css/nouislider.css")
+        style.
+            .brand-logo{ padding-left: 15px !important; }
+    
+    body
+        nav.nav-extended
+            .nav-wrapper
+                a.brand-logo(href="#") Materialize Bootbox
+                a.sidenav-trigger(href="#" data-target="mobile-demo")
+                    i.material-icons menu
+                ul#nav-mobile.right.hide-on-med-and-down
+                    li
+                        a(href="https://github.com/iqbalfn/materialize-bootbox") Github
+                ul#mobile-demo.sidenav
+                    li
+                        a(href="https://github.com/iqbalfn/materialize-bootbox") Github
+            .nav-content
+                include tabs.pug
+        
+        .container
+            .row
+                .col.s12
+                    include tab-getting-started.pug
+                    include tab-alert.pug
+                    include tab-confirm.pug
+                    include tab-prompt.pug
+                    include tab-dialog.pug
+                    include tab-options.pug
+                    include tab-methods.pug
+                    include tab-box.pug
+        
+        script(src="js/materialize.min.js")
+        script(src="js/nouislider.min.js")
+        script(src="js/mzbox.min.js")
+        script(src="js/prism.js" data-manual)
+        script.
+            new M.Tabs(document.querySelector('.tabs'));
+            
+            function ds(str){
+                return str.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
+            }
+            
+            document.querySelectorAll('.card').forEach(e => {
+              let btn = e.querySelector('.card-action > a');
+              let src = e.querySelector('.language-js');
+              
+              if(!btn || !src)
+                  return;
+             
+              let code = src.innerHTML;
+              btn.onclick = function(){
+                  try{ eval(code) }catch(e){}
+                  return false;
+              }
+            });
+            
+            Prism.highlightAll();

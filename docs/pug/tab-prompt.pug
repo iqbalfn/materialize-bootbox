@@ -1,0 +1,424 @@
+#tab-prompt
+    h1 Prompt
+                    
+    .card
+        .card-content
+            span.card-title Simple Prompt
+            pre
+                code.language-js
+                    | mzbox.prompt('What is your name #1?');
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Title
+            pre
+                code.language-js
+                    | mzbox.prompt('What is your name #2?', 'Identity');
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Title and Default Value
+            pre
+                code.language-js
+                    | mzbox.prompt('What is your name #3?', 'Identity', 'Iqbal Fauzi');
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Callback
+            pre
+                code.language-js
+                    | mzbox.prompt('What is your name #4?', function(res){ alert(res); });
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Title and Callback
+            pre
+                code.language-js
+                    | mzbox.prompt('What is your name #5?', 'Identity', function(res){ alert(res); });
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Title, Preset Value and Callback
+            pre
+                code.language-js
+                    | mzbox.prompt('What is your name #6?', 'Identity', 'Iqbal', function(res){ alert(res); });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With Options
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Identity',
+                    |   message: 'What is your name #7?',
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With Input Label
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Identity',
+                    |   message: 'What is your name #8?',
+                    |   input: {
+                    |       type: 'text',
+                    |       label: 'Fullname'
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With Input Preset Value
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Identity',
+                    |   message: 'What is your name #9?',
+                    |   input: {
+                    |       type: 'text',
+                    |       value: 'Iqbal Fauzi'
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With Input Autocomplete
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Company',
+                    |   message: 'What is your company name #10?',
+                    |   input: {
+                    |       type: 'text',
+                    |       options: [
+                    |           { text: "Apple" },
+                    |           { text: "Google" },
+                    |           { text: "Microsoft" },
+                    |           { text: "Samsung" }
+                    |       ]
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Prompt With Input Tel
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Contact',
+                    |   message: 'What is your phone number #11?',
+                    |   input: {
+                    |       type: 'tel'
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Prompt With Input URL with Validation
+            
+            p
+                | The validation here implement MaterializeCSS validation that
+                | validate the input on user leave focus from the input.
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Contact',
+                    |   message: 'What is your website #12?',
+                    |   input: {
+                    |       type: 'url'
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With Textarea
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Contact',
+                    |   message: 'What is your website #13?',
+                    |   input: {
+                    |       type: 'textarea',
+                    |       label: 'About You',
+                    |       value: 'lorem\nipsum\nsit\ndolor\namet'
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Prompt With Select
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Contact',
+                    |   message: 'What is your city #14?',
+                    |   attrs: {
+                    |       style: 'height:450px',
+                    |       class: 'modal-fixed-footer'
+                    |   },
+                    |   input: {
+                    |       type: 'select',
+                    |       label: 'Your City',
+                    |       options: [
+                    |           {
+                    |               text : 'Jakarta',
+                    |               value: 'jakarta',
+                    |               group: 'DKI Jakarta',   // optional
+                    |               icon : 'http://via.placeholder.com/40x40' // optional
+                    |           },
+                    |           {
+                    |               text : 'Bogor',
+                    |               value: 'bogor',
+                    |               group: 'Jawa Barat',   // optional
+                    |               icon : 'http://via.placeholder.com/40x40' // optional
+                    |           },
+                    |           {
+                    |               text : 'Bandung',
+                    |               value: 'bandung',
+                    |               group: 'Jawa Barat',   // optional
+                    |               icon : 'http://via.placeholder.com/40x40' // optional
+                    |           }
+                    |       ]
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Select Multiple Value
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Contact',
+                    |   message: 'What is your provider #15?',
+                    |   attrs: {
+                    |       style: 'height:450px',
+                    |       class: 'modal-fixed-footer'
+                    |   },
+                    |   input: {
+                    |       type: 'select',
+                    |       label: 'Your City',
+                    |       attrs: {
+                    |           multiple: true
+                    |       },
+                    |       value: ['simpati', 'im3'],
+                    |       options: [
+                    |           {
+                    |               text : 'Simpati',
+                    |               value: 'simpati'
+                    |           },
+                    |           {
+                    |               text : 'XL',
+                    |               value: 'xl'
+                    |           },
+                    |           {
+                    |               text : 'IM3',
+                    |               value: 'im3'
+                    |           },
+                    |           {
+                    |               text : '3',
+                    |               value: '3'
+                    |           }
+                    |       ]
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With HTML5 Range
+            
+            p 
+                | This element is not renderred by MaterializeCSS automatically.
+                | And no way to tell MaterializeCSS to render it for now.
+            
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Identity',
+                    |   message: 'How old are you #16?',
+                    |   input: {
+                    |       type: 'range',
+                    |       attrs: {
+                    |           min: 25,
+                    |           max: 70
+                    |       },
+                    |       value: '30'
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Prompt With Slider
+            
+            p
+                | Please refer to 
+                | 
+                a(href="http://next.materializecss.com/range.html") MaterializeCSS Range
+                |
+                | for more information about various options and implemention. As
+                | this element require manual installation for js and css of
+                | 
+                code noUiSlider
+                | .
+            
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Range',
+                    |   message: 'How far is somewhere from your location #17?',
+                    |   input: {
+                    |       type: 'slider',
+                    |       value: '30',
+                    |       instance: {
+                    |           start: [20, 80],
+                    |           connect: true,
+                    |           step: 1,
+                    |           orientation: 'horizontal',
+                    |           range: {
+                    |               min: 0,
+                    |               max: 100
+                    |           },
+                    |           format: wNumb({
+                    |               decimals: 0
+                    |           })
+                    |       }
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Prompt With Radio
+            
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Gender',
+                    |   message: 'Please be in the options #18?',
+                    |   input: {
+                    |       type: 'radio',
+                    |       value: 4,
+                    |       options: [
+                    |           { text: 'Male', value: 1 },
+                    |           { text: 'Female', value: 2 },
+                    |           { text: 'Apache Helicopter', value: 3 },
+                    |           { text: 'Undefined', value: 4 }
+                    |       ]
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Prompt With Checkbox
+            
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Drink',
+                    |   message: 'What do you drink #19?',
+                    |   input: {
+                    |       type: 'checkbox',
+                    |       value: [1,3],
+                    |       options: [
+                    |           { text: 'Coca Cola', value: 1 },
+                    |           { text: 'Sprite', value: 2 },
+                    |           { text: 'Fanta', value: 3 },
+                    |           { text: 'Teh Pucuk', value: 4 }
+                    |       ]
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!

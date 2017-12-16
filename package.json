@@ -1,0 +1,38 @@
+{
+  "name": "materialize-bootbox",
+  "version": "0.0.1",
+  "description": "Bootbox like plugins for materializecss 1.0",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iqbalfn/materialize-bootbox.git"
+  },
+  "keywords": [
+    "materializecss",
+    "bootbox",
+    "plugin",
+    "javascript"
+  ],
+  "author": "Iqbal Fauzi <iqbalfawz@gmail.com> (https://iqbalfn.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iqbalfn/materialize-bootbox/issues"
+  },
+  "homepage": "https://github.com/iqbalfn/materialize-bootbox#readme",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.2.1",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-pug": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}

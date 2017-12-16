@@ -1,0 +1,42 @@
+#tab-alert
+    h1 Alert
+    
+    .card
+        .card-content
+            span.card-title Simple Alert
+            pre
+                code.language-js
+                    | mzbox.alert('Hello from the box #1');
+        .card-action
+            a(href="#") Try Me!
+        
+    .card
+        .card-content
+            span.card-title Alert With Title
+            pre
+                code.language-js
+                    | mzbox.alert('Hello from the box #2', 'Oh... Hi');
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Alert With Title and Callback
+            pre
+                code.language-js
+                    | mzbox.alert('Hello from the box #3', 'Oh... Hi', function(){ alert('Thank You'); });
+        .card-action
+            a(href="#") Try Me!
+            
+    .card
+        .card-content
+            span.card-title Alert With Options
+            pre
+                code.language-js
+                    | mzbox.alert({
+                    |   title: 'Oh... Hi',
+                    |   message: 'Hello from the box #4'
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
