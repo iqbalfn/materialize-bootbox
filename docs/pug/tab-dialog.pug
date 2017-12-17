@@ -24,7 +24,8 @@
                     |   message: 'Cool hah #2?',
                     |   buttons: {
                     |       ok: {
-                    |           label: 'OK'
+                    |           label: 'OK',
+                    |           default: true
                     |       }
                     |   }
                     | });
@@ -45,7 +46,8 @@
                     |           label: 'CANCEL'
                     |       },
                     |       confirm: {
-                    |           label: 'CONFIRM'
+                    |           label: 'CONFIRM',
+                    |           default: true
                     |       }
                     |   }
                     | });
@@ -70,7 +72,8 @@
                     |           label: 'CANCEL'
                     |       },
                     |       confirm: {
-                    |           label: 'CONFIRM'
+                    |           label: 'CONFIRM',
+                    |           default: true
                     |       }
                     |   }
                     | });
@@ -102,5 +105,32 @@
                     | setTimeout(function(box){
                     |   box.close();
                     | }, 3000, box);
+        .card-action
+            a(href="#") Try Me!
+    
+    .card
+        .card-content
+            span.card-title Many buttons
+            pre
+                code.language-js
+                    | mzbox.dialog({
+                    |   title: 'Are you sure #4?',
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   },
+                    |   buttons: {
+                    |       cancel: {
+                    |           label: 'CANCEL'
+                    |       },
+                    |       doubt: {
+                    |           label: 'Doubt',
+                    |           callback: function(){ alert('In doubt'); }
+                    |       },
+                    |       confirm: {
+                    |           label: 'CONFIRM',
+                    |           default: true
+                    |       }
+                    |   }
+                    | });
         .card-action
             a(href="#") Try Me!

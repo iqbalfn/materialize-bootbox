@@ -237,7 +237,8 @@ this element require manual installation for js and css of
   message: 'Cool hah #2?',
   buttons: {
       ok: {
-          label: 'OK'
+          label: 'OK',
+          default: true
       }
   }
 });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Confirm like dialog</span><pre><code class="language-js">mzbox.dialog({
@@ -249,7 +250,8 @@ this element require manual installation for js and css of
           label: 'CANCEL'
       },
       confirm: {
-          label: 'CONFIRM'
+          label: 'CONFIRM',
+          default: true
       }
   }
 });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt like dialog</span><pre><code class="language-js">mzbox.dialog({
@@ -265,7 +267,8 @@ this element require manual installation for js and css of
           label: 'CANCEL'
       },
       confirm: {
-          label: 'CONFIRM'
+          label: 'CONFIRM',
+          default: true
       }
   }
 });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Blocked Progress</span><p>The 
@@ -280,7 +283,25 @@ know them as html.</p><pre><code class="language-js">let box = mzbox.dialog({
  
 setTimeout(function(box){
   box.close();
-}, 3000, box);</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-options"><h1>Options</h1><table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Target</th><th>Description</th></tr></thead><tbody><tr><td><code>animate</code></td><td><code>boolean</code></td><td><code>true</code></td><td><code>*</code></td><td>Show animation on show/hide the box modal.</td></tr><tr><td><code>attrs</code></td><td><code>object</code></td><td><code>null</code></td><td><code>*</code></td><td>Additional attribute to add to the
+}, 3000, box);</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Many buttons</span><pre><code class="language-js">mzbox.dialog({
+  title: 'Are you sure #4?',
+  callback: function(res){
+      alert(res);
+  },
+  buttons: {
+      cancel: {
+          label: 'CANCEL'
+      },
+      doubt: {
+          label: 'Doubt',
+          callback: function(){ alert('In doubt'); }
+      },
+      confirm: {
+          label: 'CONFIRM',
+          default: true
+      }
+  }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-options"><h1>Options</h1><table><thead><tr><th>Name</th><th>Type</th><th>Default</th><th>Target</th><th>Description</th></tr></thead><tbody><tr><td><code>animate</code></td><td><code>boolean</code></td><td><code>true</code></td><td><code>*</code></td><td>Show animation on show/hide the box modal.</td></tr><tr><td><code>attrs</code></td><td><code>object</code></td><td><code>null</code></td><td><code>*</code></td><td>Additional attribute to add to the
 <code>.modal</code>
 element. Where the key of the object is the attribute name, and the value is the attribute value.</td></tr><tr><td><code>buttons</code></td><td><code>object</code></td><td><code>'vary'</code></td><td><code>dialog</code></td><td> The box buttons. Please use below structure to define the buttons:<pre><code class="language-js">{
   "[name]": {
@@ -288,6 +309,7 @@ element. Where the key of the object is the attribute name, and the value is the
       "attrs": {
           "class": "[CLASSNAME]"
       },
+      "default": true,
       "callback": function "[CALLBACK]"(){}
   },
   ...

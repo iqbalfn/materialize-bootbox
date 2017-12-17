@@ -9,6 +9,7 @@ let Box = function(options){
     this.instance = null;
     this.input    = null;
     this.options  = options;
+    this.buttons  = [];
     
     for(let opt in Options){
         if(!options.hasOwnProperty(opt))
@@ -69,6 +70,11 @@ Box.prototype.buildHTML = function(){
             abtn.addClass(button.attrs.class);
             
             abtn.one('click', function(){ $this.action = $(this); });
+            
+            if(button.default)
+                abtn.data('default', true);
+            
+            $this.buttons.push(abtn);
         }
     }
     
@@ -225,12 +231,32 @@ Box.prototype.buildInput = function(parent){
                         });
                         
                         mfOpts.data = iOpts;
+                        mfOpts.onAutocomplete = function(){
+                            iText.data('efac', true);
+                            if(input.instance && input.instance.onAutocomplete)
+                                input.instance.onAutocomplete();
+                        }
                         
                         iText.data('instance', new M.Autocomplete(iText.get(0), mfOpts));
                     }
                     
                     if(input.value)
                         iText.val(input.value);
+                    
+                    iText.on('keyup', e => {
+                        if(e.keyCode != 13)
+                            return;
+                        
+                        if(input.options){
+                            if(iText.data('efac'))
+                                return iText.data('efac', false);
+                        }
+                        
+                        $this.buttons.forEach(btn => {
+                            if(btn.data('default'))
+                                btn.get(0).click();
+                        });
+                    });
             }
             
             if(input.label)
@@ -266,8 +292,15 @@ Box.prototype.buildMOptions = function(){
     result.ready = function(){
         if(options.init)
             options.init();
+        
         if($this.input && $this.input.get)
             $this.input.get(0).focus();
+        else{
+            $this.buttons.forEach(btn => {
+                if(btn.data('default'))
+                    btn.get(0).focus();
+            });
+        }
     };
     
     result.complete = function(){

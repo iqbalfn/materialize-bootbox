@@ -1,6 +1,6 @@
 {
   "name": "materialize-bootbox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bootbox like plugins for materializecss 1.0",
   "scripts": {
     "test": "mocha"

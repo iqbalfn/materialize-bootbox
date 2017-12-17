@@ -51,3 +51,19 @@ bootbox.dialog(options);
     1. Chips
     1. Pickers
     1. Switches?
+
+## License
+
+It's MIT.
+
+The plugins require materialize to be alive.
+Please refer to [materialize](https://github.com/dogfalo/materialize/) license.
+
+For the docs, please also see [prism](https://github.com/PrismJS/prism).
+
+## Changelog
+
+### 0.0.2
+
+1. Add buttons options `default` that will set the box button on focus right after
+    the box visible.

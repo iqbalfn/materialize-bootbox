@@ -43,6 +43,16 @@ module.exports = function(grunt) {
         },
         
         copy: {
+            docs: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: 'mzbox.js',
+                        dest: 'docs/js/'
+                    }
+                ]
+            },
             default: {
                 files: [
                     {
@@ -89,7 +99,7 @@ module.exports = function(grunt) {
         
         watch: {
             files: ['src/*.js', 'docs/pug/*.pug'],
-            tasks: ['concat', 'pug:default']
+            tasks: ['concat', 'pug:default', 'copy:docs']
         }
     });
     
@@ -98,6 +108,7 @@ module.exports = function(grunt) {
         'babel:dist',
         'uglify:dist',
         'pug:dist',
+        'copy:docs',
         'copy:default'
     ]);
 };

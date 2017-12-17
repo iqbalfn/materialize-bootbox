@@ -2,7 +2,8 @@ let Buttons = {
     
     alert: {
         ok: {
-            label: 'OK'
+            label: 'OK',
+            default: true
         }
     },
     
@@ -11,7 +12,8 @@ let Buttons = {
             label: 'CANCEL'
         },
         confirm: {
-            label: 'CONFIRM'
+            label: 'CONFIRM',
+            default: true
         }
     },
     
@@ -20,7 +22,8 @@ let Buttons = {
             label: 'CANCEL'
         },
         confirm: {
-            label: 'CONFIRM'
+            label: 'CONFIRM',
+            default: true
         }
     }
     
