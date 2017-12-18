@@ -14,34 +14,34 @@ Instalation
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"></script>
 
 <!-- Materialize Bootbox -->
-<script src="static/js/mzbox.js"></script>
+<script src="static/js/mzbox.min.js"></script>
 ```
 
 Usage
 -----
 
 ```js
-bootbox.alert(message);
-bootbox.alert(message, title);
-bootbox.alert(message, callback);
-bootbox.alert(message, title, callback);
-bootbox.alert(options);
+mzbox.alert(message);
+mzbox.alert(message, title);
+mzbox.alert(message, callback);
+mzbox.alert(message, title, callback);
+mzbox.alert(options);
 
-bootbox.confirm(message);
-bootbox.confirm(message, title);
-bootbox.confirm(message, callback);
-bootbox.confirm(message, title, callback);
-bootbox.confirm(options);
+mzbox.confirm(message);
+mzbox.confirm(message, title);
+mzbox.confirm(message, callback);
+mzbox.confirm(message, title, callback);
+mzbox.confirm(options);
 
-bootbox.prompt(message);
-bootbox.prompt(message, title);
-bootbox.prompt(message, callback);
-bootbox.prompt(message, title, value);
-bootbox.prompt(message, title, callback);
-bootbox.prompt(message, title, value, callback);
-bootbox.prompt(options);
+mzbox.prompt(message);
+mzbox.prompt(message, title);
+mzbox.prompt(message, callback);
+mzbox.prompt(message, title, value);
+mzbox.prompt(message, title, callback);
+mzbox.prompt(message, title, value, callback);
+mzbox.prompt(options);
 
-bootbox.dialog(options);
+mzbox.dialog(options);
 ```
 
 ## TODO
@@ -59,7 +59,7 @@ It's MIT.
 The plugins require materialize to be alive.
 Please refer to [materialize](https://github.com/dogfalo/materialize/) license.
 
-For the docs, please also see [prism](https://github.com/PrismJS/prism).
+For the docs, please also see [prism](https://github.com/PrismJS/prism) license.
 
 ## Changelog
 
