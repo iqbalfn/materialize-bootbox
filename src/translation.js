@@ -10,6 +10,12 @@ let Translation = {
         OK: 'Oke',
         CONFIRM: 'Setuju',
         CANCEL: 'Batal'
+    },
+    
+    fa: {
+        OK: 'باشه',
+        CONFIRM: 'تایید',
+        CANCEL: 'لغو'
     }
     
 }
