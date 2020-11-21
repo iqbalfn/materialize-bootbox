@@ -65,8 +65,10 @@ For the docs, please also see [prism](https://github.com/PrismJS/prism) license.
 
 1. Add buttons options `default`
 
-### 0.0.3
+### 1.0.0
 
-1. Completly remove jQuery usage
-2. Fix bug that changes on materialize 1.0.0 release.
-3. Fix old bug on select, html5 range, and other
+1. Fix bug on select element of prompt
+1. HTML5 range is now rendered properly
+1. Adding prompt input type switch
+1. Bump support to Materialize 1.0.0
+1. Remove jQuery dev
