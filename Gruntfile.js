@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             options: {
                 sourceMap: false,
                 minified: true,
-                presets: ['env']
+                presets: ['@babel/preset-env']
             },
             dist: {
                 files: {
@@ -33,6 +33,8 @@ module.exports = function(grunt) {
                         
                         'src/id.js',
                         'src/get-args.js',
+
+                        'src/html.js',
                      
                         'src/box.js',
                      
@@ -96,6 +98,26 @@ module.exports = function(grunt) {
                 }
             }
         },
+
+        usebanner: {
+            dist: {
+                options: {
+                    banner: [
+                        '/*!',
+                        ' * Materialize Bootbox v<%= pkg.version %> (<%= pkg.homepage %>)',
+                        ' * Copyright 2017-2020 Iqbal Fauzi',
+                        ' * MIT License (https://raw.githubusercontent.com/iqbalfn/materialize-bootbox/master/LICENSE)',
+                        ' */'
+                    ].join("\n")
+                },
+                files: {
+                    src: [
+                        'dist/mzbox.js',
+                        'dist/mzbox.min.js'
+                    ]
+                }
+            }
+        },
         
         watch: {
             files: ['src/*.js', 'docs/pug/*.pug'],
@@ -107,6 +129,7 @@ module.exports = function(grunt) {
         'concat:default',
         'babel:dist',
         'uglify:dist',
+        'usebanner:dist',
         'pug:dist',
         'copy:docs',
         'copy:default'

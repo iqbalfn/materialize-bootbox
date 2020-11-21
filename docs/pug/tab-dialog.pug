@@ -83,23 +83,20 @@
     .card
         .card-content
             span.card-title Blocked Progress
-            
-            p
-                | The 
-                |
-                code ds
-                |
-                | function is an for demo only internal function so the html not
-                | renderred by browser for syntax highlighter purpose, while
-                |
-                code mzbox
-                |
-                | know them as html.
+
             pre
                 code.language-js
+                    | let progress = document.createElement('div')
+                    | progress.classList.add('progress')
+                    | 
+                    | let indeterminate = document.createElement('div')
+                    | indeterminate.classList.add('indeterminate')
+                    | 
+                    | progress.appendChild(indeterminate)
+                    |
                     | let box = mzbox.dialog({
                     |   dismissible: false,
-                    |   message: ds('&lt;div class="progress"&gt;&lt;div class="indeterminate"&gt;&lt;/div&gt;&lt;/div&gt;')
+                    |   message: progress
                     | });
                     | 
                     | setTimeout(function(box){

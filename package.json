@@ -1,10 +1,7 @@
 {
   "name": "materialize-bootbox",
-  "version": "0.0.2",
-  "description": "Bootbox like plugins for materializecss 1.0",
-  "scripts": {
-    "test": "mocha"
-  },
+  "version": "1.0.0",
+  "description": "Bootbox like plugins for Materialize 1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iqbalfn/materialize-bootbox.git"
@@ -20,19 +17,22 @@
   "bugs": {
     "url": "https://github.com/iqbalfn/materialize-bootbox/issues"
   },
-  "homepage": "https://github.com/iqbalfn/materialize-bootbox#readme",
+  "homepage": "https://materialize-bootbox.js.org/",
   "dependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.3.0",
     "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-uglify": "^3.2.1",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-uglify": "^5.0.0",
+    "grunt-contrib-watch": "^1.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "grunt-babel": "^7.0.0",
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "grunt-babel": "^8.0.0",
+    "grunt-banner": "^0.6.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-pug": "^1.0.0",
-    "load-grunt-tasks": "^3.5.2"
+    "grunt-contrib-pug": "^2.0.0",
+    "load-grunt-tasks": "^5.1.0"
   }
 }

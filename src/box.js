@@ -4,362 +4,436 @@
  * @return this
  */
 let Box = function(options){
-    this.action   = null;
-    this.element  = null;
-    this.instance = null;
-    this.input    = null;
-    this.options  = options;
-    this.buttons  = [];
+    this.action   = null
+    this.element  = null
+    this.instance = null
+    this.input    = null
+    this.options  = options
+    this.buttons  = []
     
     for(let opt in Options){
         if(!options.hasOwnProperty(opt))
-            options[opt] = Options[opt];
+            options[opt] = Options[opt]
     }
     
-    let modal = this.buildHTML();
-    let mopts = this.buildMOptions();
+    let modal = this.buildHTML()
+    let mopts = this.buildMOptions()
     
-    this.instance = new M.Modal(modal, mopts);
-    this.instance.open();
+    this.instance = M.Modal.init(modal, mopts)
+    this.instance.open()
 }
 
 Box.prototype.close = function(){
-    this.instance.close();
+    this.instance.close()
 }
 
 Box.prototype.buildHTML = function(){
-    let options = this.options;
-    let $this   = this;
-    let onDone  = null;
+    let options = this.options
+    let $this   = this
+    let onDone  = null
     
-    let modal = this.element = $('<div class="modal"></div>').appendTo(document.body);
-    if(options.attrs){
-        for(let attr in options.attrs){
-            if(attr === 'class')
-                modal.addClass(options.attrs[attr]);
-            else
-                modal.attr(attr, options.attrs[attr]);
-        }
-    }
-    
+    let modal = this.element = H.append(H.body, H.create('modal'))
+    if(options.attrs)
+        H.attr(modal, options.attrs)
+
     // content
-    let modalContent = $('<div class="modal-content"></div>').appendTo(modal);
+    let modalContent = H.append(modal, H.create('modal-content'))
     
     if(options.title)
-        $(`<h4>${options.title}</h4>`).appendTo(modalContent);
-    if(options.message)
-        $(`<p>${options.message}</p>`).appendTo(modalContent);
+        H.append(modalContent, H.text(options.title, 4))
+    if(options.message){
+        let msg = options.message
+        if(!(options.message instanceof HTMLElement))
+            msg = H.text(options.message)
+        H.append(modalContent, msg)
+    }
     if(options.input)
-        onDone = $this.buildInput(modalContent);
+        onDone = $this.buildInput(modalContent)
     
     // actions
     if(options.buttons){
-        let modalFooter = $('<div class="modal-footer"></div>').appendTo(modal);
+        let modalFooter = H.append(modal, H.create('modal-footer'))
         for(let name in options.buttons){
-            let button = options.buttons[name];
+            let button = options.buttons[name]
             
-            let label  = button.label;
-            if(Translation[options.locale] && Translation[options.locale][label])
-                label = Translation[options.locale][label];
+            let label  = button.label
+            let locale = options.locale
+            if(Translation[locale] && Translation[locale][label])
+                label = Translation[locale][label]
             
-            let abtn = $(`<a href="#!" data-name="${name}" class="modal-action modal-close waves-effect btn-flat">${label}</a>`).appendTo(modalFooter);
+            let abtnAtrs = {
+                href  : '#!',
+                class : 'modal-action modal-close waves-effect btn-flat',
+                data  : {name}
+            }
+            let abtn = H.append(modalFooter, H.create(abtnAtrs, 'a', label))
             if(!button.attrs)
-                button.attrs = {};
-            if(!button.attrs.class)
-                button.attrs.class = name != 'cancel' ? 'waves-green' : 'waves-red';
-            abtn.addClass(button.attrs.class);
+                button.attrs = {}
+            if(!button.attrs.class){
+                let btnCls = name != 'cancel' ? 'green' : 'red'
+                button.attrs.class = 'waves-' + btnCls
+            }
+            abtn.classList.add(button.attrs.class)
             
-            abtn.one('click', function(){ $this.action = $(this); });
-            
+            abtn.addEventListener('click', function(){
+                $this.action = this
+            }, false)
+
             if(button.default)
-                abtn.data('default', true);
+                abtn.dataset.default = true
             
-            $this.buttons.push(abtn);
+            $this.buttons.push(abtn)
         }
     }
     
     if(onDone)
-        onDone();
+        onDone()
     
-    return modal.get(0);
+    return modal
 }
 
 Box.prototype.buildInput = function(parent){
-    let $this = this;
-    let input = this.options.input;
+    let $this = this
+    let input = this.options.input
     if(!input)
-        return;
+        return
     
-    let mfOpts = input.instance || {};
+    let mfOpts = input.instance || {}
     
-    input.id = ID.get('modal-input-');
+    input.id = ID.get('modal-input-')
     if(!input.type)
-        input.type = 'text';
+        input.type = 'text'
     
-    let callback = null;
-    let iField;
-    let iText;
-    let iTexts = [];
-    let iValues = [];
+    let callback = null
+    let iField
+    let iText
+    let iTexts = []
+    let iTAttrs
+    let iTLabel
+    let iValues = []
     
     switch(input.type){
         case 'checkbox':
         case 'radio':
-            iField  = $('<div class="checkbox-field"></div>').appendTo(parent);
-            iValues = $.isArray(input.value) ? input.value : [input.value];
+            iField  = H.append(parent, H.create('checkbox-field'))
+            iValues = H.isArray(input.value, [input.value])
+
+            let iTClass = input.type === 'radio' ? 'with-gap' : 'filled-in'
+
             input.options.forEach(e => {
-                let iOCont  = $('<div></div>').appendTo(iField);
-                let iTLabel = $('<label></label>').appendTo(iOCont);
-                iText = $(`<input type="${input.type}" name="${input.id}" value="${e.value}">`).appendTo(iTLabel);
-                $(`<span>${e.text}</span>`).appendTo(iTLabel);
-                
+                let iOCont  = H.append(iField, H.create())
+                iTLabel = H.append(iOCont, H.create(0, 'label'))
+                iTAttrs = {
+                    type : input.type,
+                    name : input.id,
+                    value: e.value,
+                    class: iTClass
+                }
+
                 if(input.type == 'radio' && input.value == e.value)
-                    iText.prop('checked', true);
+                    iTAttrs.checked = 'checked'
                 else if(input.type == 'checkbox' && ~iValues.indexOf(e.value))
-                    iText.prop('checked', true);
-                
-                iTexts.push(iText);
-            });
-            this.input = iTexts;
-            break;
+                    iTAttrs.checked = 'checked'
+
+                iText = H.append(iTLabel, H.input(iTAttrs))
+                H.append(iTLabel, H.span(e.text))
+
+                iTexts.push(iText)
+            })
+            this.input = iTexts
+
+            break
+            
+        case 'range':
+            iTAttrs =  {
+                id   : input.id,
+                type : 'range',
+                value: input.value || 0
+            }
+
+            iField  = H.append(parent, H.create('range-field'))
+            iText   = H.append(iField, H.input(iTAttrs))
+
+            if(input.attrs)
+                H.attr(iText, input.attrs)
+
+            callback = function(iText){
+                return function(){
+                    setTimeout(() => M.Range.init(iText), 100)
+                }
+            }(iText)
+
+            this.input = iText
+
+            break
         
         case 'slider':
-            iText = $(`<div id="${input.id}"></div>`).appendTo(parent);
-            noUiSlider.create(iText.get(0), mfOpts);
-            this.input = iText;
-            break;
-            
-        // TODO
-        // - Materialize don't handle this new created element.
-        case 'range':
-            iField = $('<div class="range-field"></div>').appendTo(parent);
-            iText  = $(`<input type="range" id="${input.id}">`).appendTo(iField);
-            
-            if(input.attrs){
-                for(let name in input.attrs){
-                    let value = input.attrs[name];
-                    
-                    if(name == 'class')
-                        iText.addClass(value);
-                    else
-                        iText.attr(name, value);
-                }
-            }
-            this.input = iText;
-            break;
+            iText = H.append(parent, H.create({id:input.id}))
+            noUiSlider.create(iText, mfOpts)
+            this.input = iText
+
+            break
+
+        case 'switch':
+            iField  = H.append(parent, H.create('switch'))
+            iTLabel = H.append(iField, H.create(0, 'label'))
+
+            if(!input.text)
+                input.text = {}
+
+            if(input.text.before)
+                H.append(iTLabel, H.plain(input.text.before))
+
+            iText = H.append(iTLabel, H.input({type:'checkbox'}))
+            if(input.attrs)
+                H.attr(iText, input.attrs)
+
+            H.append(iTLabel, H.create('lever', 'span'))
+
+            if(input.text.after)
+                H.append(iTLabel, H.plain(input.text.after))
+
+            this.input = iText
+
+            break
         
         default:
-            iField = $('<div class="input-field"></div>').appendTo(parent);
+            iField = H.append(parent, H.create('input-field'))
             
+            iTAttrs = {}
+
             switch(input.type){
                 case 'textarea':
-                    iText = $(`<textarea class="materialize-textarea" id="${input.id}"></textarea>`).appendTo(iField);
-                    
+                    iTAttrs = {
+                        class: 'materialize-textarea',
+                        id   : input.id
+                    }
+                    iText = H.append(iField, H.create(iTAttrs, 'textarea'))
+
                     if(input.value)
-                        iText.val(input.value);
+                        iText.value = input.value
                     
                     callback = function(iText){
                         return function(){
-                            setTimeout(() => {
-                                iText.trigger('autoresize');
-                            }, 100);
+                            setTimeout(() => M.textareaAutoResize(iText), 100)
                         }
-                    }(iText);
+                    }(iText)
                     
-                    break;
+                    break
                     
                 case 'select':
-                    iText = $('<select></select>').appendTo(iField);
-                    
+                    iTAttrs = {}
                     if(input.attrs && input.attrs.multiple)
-                        iText.prop('multiple', true);
+                        iTAttrs.multiple = 'multiple'
+
+                    iText = H.append(iField, H.create(iTAttrs, 'select'))
                     
                     if(input.label){
-                        let iAttr = 'disabled';
+                        let plAtt = {disabled:'disabled'}
                         if(!input.value)
-                            iAttr+= ' selected';
-                        iText.append(`<option value="" ${iAttr}>${input.label}</option>`);
+                            plAtt.selected = 'selected'
+
+                        H.append(iText, H.create(plAtt, 'option', input.label))
                     }
                     
                     if(input.options){
-                        let iGroups = {};
-                        iValues = $.isArray(input.value) ? input.value : [input.value];
+                        let iGroups = {}
+                        if(!input.value)
+                            input.value = []
+                        iValues = H.isArray(input.value, [input.value])
                         
                         input.options.forEach(e => {
-                            let iOpt = $(`<option value="${e.value}">${e.text}</option>`);
+                            let iOpAtt = {value:e.value}
+                            
                             if(~iValues.indexOf(e.value))
-                                iOpt.attr('selected', 'selected');
-                            
+                                iOpAtt.selected = 'selected'
+
                             if(e.icon){
-                                iText.addClass('icons');
-                                iOpt.attr('data-icon', e.icon);
+                                iText.classList.add('icons')
+                                iOpAtt.data = {icon: e.icon}
                             }
-                            
+
+                            let iOpt = H.create(iOpAtt, 'option', e.text)
+
                             if(!e.group)
-                                iText.append(iOpt);
+                                H.append(iText, iOpt)
                             else{
-                                if(!iGroups[e.group])
-                                    iGroups[e.group] = $(`<optgroup label="${e.group}"></optgroup>`).appendTo(iText);
-                                iGroups[e.group].append(iOpt);
+                                if(!iGroups[e.group]){
+                                    let iGr = H.optgroup(e.group)
+                                    H.append(iText, iGr)
+                                    iGroups[e.group] = iGr
+                                }
+                                H.append(iGroups[e.group], iOpt)
                             }
-                        });
+                        })
                     }
                     
                     callback = function(iText, mfOpts){
                         return function(){
                             setTimeout(() => {
-                                iText.data('instance', new M.Select(iText.get(0), mfOpts));
-                            }, 100);
+                                M.FormSelect.init(iText, mfOpts)
+                            }, 100)
                         }
-                    }(iText, mfOpts);
+                    }(iText, mfOpts)
                     
-                    break;
+                    break
                 
                 default:
-                    iText = $(`<input type="${input.type}" id="${input.id}">`).appendTo(iField);
-                    
+                    let iAttr = {type:input.type,id:input.id}
+                    iText = H.append(iField, H.input(iAttr))
+
                     if(~['email', 'url'].indexOf(input.type)){
-                        iText.addClass('validate');
-                        iField.append('<span class="helper-text" data-error="Invalid value"></span>');
+                        iText.classList.add('validate')
+                        let spnAttr = {
+                            class: 'helper-text',
+                            data : {error:'Invalid value'}
+                        }
+                        H.append(iField, H.create(spnAttr, 'span'))
                     }
                     
                     if(input.options){
-                        let iOpts = {};
+                        let iOpts = {}
                         
                         input.options.forEach(e => {
-                            iOpts[e.text] = null;
-                        });
+                            iOpts[e.text] = null
+                        })
                         
-                        mfOpts.data = iOpts;
+                        mfOpts.data = iOpts
                         mfOpts.onAutocomplete = function(){
-                            iText.data('efac', true);
+                            iText.dataset.efac = true
                             if(input.instance && input.instance.onAutocomplete)
-                                input.instance.onAutocomplete();
+                                input.instance.onAutocomplete()
                         }
                         
-                        iText.data('instance', new M.Autocomplete(iText.get(0), mfOpts));
+                        let mAuto = new M.Autocomplete(iText, mfOpts)
+                        iText.dataset.instance =mAuto
                     }
                     
                     if(input.value)
-                        iText.val(input.value);
+                        iText.value = input.value
                     
-                    iText.on('keyup', e => {
+                    iText.addEventListener('keyup', e => {
                         if(e.keyCode != 13)
-                            return;
+                            return
                         
                         if(input.options){
-                            if(iText.data('efac'))
-                                return iText.data('efac', false);
+                            if(iText.dataset.efac)
+                                return (iText.dataset.efac = false)
                         }
                         
                         $this.buttons.forEach(btn => {
-                            if(btn.data('default'))
-                                btn.get(0).click();
-                        });
-                    });
+                            if(btn.dataset.default)
+                                btn.click()
+                        })
+                    }, false)
             }
             
             if(input.label)
-                iField.append(`<label for="${input.id}">${input.label}</label>`);
+                H.append(iField, H.create({for:input.id}, 'label', input.label))
             
-            if(input.attrs){
-                for(let name in input.attrs){
-                    let value = input.attrs[name];
-                    
-                    if(name == 'class')
-                        iText.addClass(value);
-                    else
-                        iText.attr(name, value);
-                }
-            }
-            
-            this.input = iText;
+            if(input.attrs)
+                H.attr(iText, input.attrs)
+
+            this.input = iText
     }
     
-    return callback;
+    return callback
 }
 
 Box.prototype.buildMOptions = function(){
-    let result  = {};
-    let options = this.options;
-    let $this   = this;
+    let result  = {}
+    let options = this.options
+    let $this   = this
     
-    result.dismissible = options.dismissible;
+    result.dismissible = options.dismissible
     
     if(!options.animate)
-        result.inDuration = result.outDuration = 0;
+        result.inDuration = result.outDuration = 0
     
-    result.ready = function(){
+    result.onOpenEnd = function(){
         if(options.init)
-            options.init();
+            options.init()
         
-        if($this.input && $this.input.get)
-            $this.input.get(0).focus();
+        if($this.input && $this.input.focus)
+            $this.input.focus()
         else{
             $this.buttons.forEach(btn => {
-                if(btn.data('default'))
-                    btn.get(0).focus();
-            });
+                if(btn.dataset.default)
+                    btn.focus()
+            })
         }
-    };
+    }
     
-    result.complete = function(){
-        let param = undefined;
+    result.onCloseEnd = function(){
+        let param = undefined
         
         if(options.callback){
             if(!$this.action)
-                options.callback();
+                options.callback()
             else{
-                let btnName = $this.action.data('name');
-                let buttons = options.buttons[btnName];
+                let btnName = $this.action.dataset.name
+                let button  = options.buttons[btnName]
                 
-                if(buttons.callback)
-                    buttons.callback();
+                if(button.callback)
+                    button.callback()
                 
                 if(btnName !== 'confirm'){
-                    options.callback(btnName=='cancel'?false:undefined);
+                    options.callback(btnName=='cancel' ? false : undefined)
                 }else{
                     if(!$this.input)
-                        options.callback(true);
+                        options.callback(true)
                     else{
-                        let value = '';
+                        let value = ''
                         switch(options.input.type){
                             case 'checkbox':
-                                value = [];
+                                value = []
                                 $this.input.forEach(e => {
-                                    if(e.prop('checked'))
-                                        value.push(e.val());
-                                });
-                                break;
+                                    if(e.checked)
+                                        value.push(e.value)
+                                })
+                                break
                                 
                             case 'radio':
                                 $this.input.forEach(e => {
-                                    if(e.prop('checked'))
-                                        value = e.val();
-                                });
-                                break;
+                                    if(e.checked)
+                                        value = e.value
+                                })
+                                break
+
+                            case 'select':
+                                if( $this.input.getAttribute('multiple') ){
+                                    let instance = M.FormSelect.getInstance($this.input)
+                                    value = instance.getSelectedValues()
+                                }else{
+                                    value = $this.input.value
+                                }
+                                break
                                 
                             case 'slider':
-                                value = $this.input.get(0).noUiSlider.get();
-                                break;
+                                value = $this.input.noUiSlider.get()
+                                break
+
+                            case 'switch':
+                                value = $this.input.checked ? 1 : 0
+                                break
                                 
                             default:
-                                value = $this.input.val();
+                                value = $this.input.value
                                 if(options.input.type == 'select'){
-                                    if($.isArray(value) && value[0] == '')
-                                        value.splice(0,1);
+                                    if(Array.isArray(value) && value[0] == '')
+                                        value.splice(0,1)
                                 }
                         }
                         if(!value)
-                            value = '';
-                        options.callback(value);
+                            value = ''
+                        options.callback(value)
                     }
                 }
             }
         }
         
-        $this.element.remove();
-    };
+        $this.element.remove()
+    }
     
-    return result;
+    return result
 }

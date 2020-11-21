@@ -157,6 +157,7 @@
                             |   // - any of input type
                             |   // - textarea
                             |   // - select 
+                            |   // - switch
                             |   // - checkbox
                             |   // - radio
                             |   "type": "text",
@@ -182,6 +183,12 @@
                             |   // materialize form instance options
                             |   "instance": {
                             |   },
+                            |
+                            |   // text label for switch
+                            |   "text": {
+                            |       "before": "Off",
+                            |       "after": "On"
+                            |   }
                             | 
                             |   // preset value
                             |   "value": null
@@ -210,12 +217,12 @@
                 td
                     code message
                 td
-                    code string
+                    code string|dom
                 td
                     code ''
                 td
                     code *
-                td The dialog message text, it also accept html.
+                td The dialog message text, it also accept dom element.
             tr
                 td
                     code title

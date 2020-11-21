@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8"><title>Materialize Bootbox</title><link rel="stylesheet" href="css/materialize.min.css"><link rel="stylesheet" href="css/prism.css"><link rel="stylesheet" href="css/nouislider.css"><style>.brand-logo{ padding-left: 15px !important; }</style><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-109160705-1','auto',{'allowLinker':true});ga('require','linker');ga('linker:autoLink', ["iqbalfn.com"]);ga('send','pageview');</script></head><body><nav class="nav-extended"><div class="nav-wrapper"><a class="brand-logo" href="#">Materialize Bootbox</a><a class="sidenav-trigger" href="#" data-target="mobile-demo"><i class="material-icons">menu</i></a><ul class="right hide-on-med-and-down" id="nav-mobile"><li><a href="https://github.com/iqbalfn/materialize-bootbox">Github</a></li></ul><ul class="sidenav" id="mobile-demo"><li><a href="https://github.com/iqbalfn/materialize-bootbox">Github</a></li></ul></div><div class="nav-content"><ul class="tabs tabs-transparent"><li class="tab"><a class="active" href="#tab-getting-started">Getting Started</a></li><li class="tab"><a href="#tab-alert">Alert</a></li><li class="tab"><a href="#tab-confirm">Confirm</a></li><li class="tab"><a href="#tab-prompt">Prompt</a></li><li class="tab"><a href="#tab-dialog">Dialog</a></li><li class="tab"><a href="#tab-options">Options</a></li><li class="tab"><a href="#tab-methods">Methods</a></li><li class="tab"><a href="#tab-box">Box</a></li></ul></div></nav><div class="container"><div class="row"><div class="col s12"><div id="tab-getting-started"><h1>Getting Started</h1><h4>Bootbox like plugins for Materialize 1.0.</h4><p>The plugin implement materialize modal and style, so, no more additional css to include.</p><p>This is a plugins. So, just include the js file after materialize, and you're ready to go.</p><pre><code class="language-html">&lt;!-- Compiled and minified CSS --&gt;
-&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/css/materialize.min.css"&gt;
+<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8"><title>Materialize Bootbox</title><link rel="stylesheet" href="css/materialize.min.css"><link rel="stylesheet" href="css/prism.css"><link rel="stylesheet" href="css/nouislider.css"><style>.brand-logo{ padding-left: 15px !important; }</style><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-109160705-1','auto',{'allowLinker':true});ga('require','linker');ga('linker:autoLink', ["iqbalfn.com"]);ga('send','pageview');</script></head><body><nav class="nav-extended"><div class="nav-wrapper"><a class="brand-logo" href="#">Materialize Bootbox v1.0.0</a><a class="sidenav-trigger" href="#" data-target="mobile-demo"><i class="material-icons">menu</i></a><ul class="right hide-on-med-and-down" id="nav-mobile"><li><a href="https://github.com/iqbalfn/materialize-bootbox">Github</a></li></ul><ul class="sidenav" id="mobile-demo"><li><a href="https://github.com/iqbalfn/materialize-bootbox">Github</a></li></ul></div><div class="nav-content"><ul class="tabs tabs-transparent"><li class="tab"><a class="active" href="#tab-getting-started">Getting Started</a></li><li class="tab"><a href="#tab-alert">Alert</a></li><li class="tab"><a href="#tab-confirm">Confirm</a></li><li class="tab"><a href="#tab-prompt">Prompt</a></li><li class="tab"><a href="#tab-dialog">Dialog</a></li><li class="tab"><a href="#tab-options">Options</a></li><li class="tab"><a href="#tab-methods">Methods</a></li><li class="tab"><a href="#tab-box">Box</a></li></ul></div></nav><div class="container"><div class="row"><div class="col s12"><div id="tab-getting-started"><h1>Getting Started</h1><h4>Bootbox like plugins for Materialize 1.0.</h4><p>The plugin implement materialize modal and style. No more additional css to include.</p><p>This is a plugin. Just include the js file after materialize, and you're ready to go.</p><pre><code class="language-html">&lt;!-- Compiled and minified CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"&gt;
  
 &lt;!-- Compiled and minified JavaScript --&gt;
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.2/js/materialize.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"&gt;&lt;/script&gt;
  
 &lt;!-- Materialize Bootbox --&gt;
 &lt;script src="static/js/mzbox.min.js"&gt;&lt;/script&gt;</code></pre></div><div id="tab-alert"><h1>Alert</h1><div class="card"><div class="card-content"><span class="card-title">Simple Alert</span><pre><code class="language-js">mzbox.alert('Hello from the box #1');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert With Title</span><pre><code class="language-js">mzbox.alert('Hello from the box #2', 'Oh... Hi');</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert With Title and Callback</span><pre><code class="language-js">mzbox.alert('Hello from the box #3', 'Oh... Hi', function(){ alert('Thank You'); });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert With Options</span><pre><code class="language-js">mzbox.alert({
@@ -95,6 +95,7 @@ validate the input on user leave focus from the input.</p><pre><code class="lang
   input: {
       type: 'select',
       label: 'Your City',
+      value: 'jakarta',
       options: [
           {
               text : 'Jakarta',
@@ -155,8 +156,7 @@ validate the input on user leave focus from the input.</p><pre><code class="lang
   callback: function(res){
       alert(res);
   }
-});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With HTML5 Range</span><p> This element is not renderred by MaterializeCSS automatically.
-And no way to tell MaterializeCSS to render it for now.</p><pre><code class="language-js">mzbox.prompt({
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With HTML5 Range</span><pre><code class="language-js">mzbox.prompt({
   title: 'Identity',
   message: 'How old are you #16?',
   input: {
@@ -229,6 +229,27 @@ this element require manual installation for js and css of
   callback: function(res){
       alert(res);
   }
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Prompt With Switch</span><p>The callback will get
+<code>1</code>
+for active switch, and
+<code>0</code>
+for inactive switch. Please compare data type on your logic
+for inactive state or user clicking cancel button.</p><pre><code class="language-js">mzbox.prompt({
+  title: 'Activate',
+  message: 'Would you like to activate it? #20',
+  input: {
+      attrs: {
+          checked: 'checked'
+      },
+      type: 'switch',
+      text: {
+          before: 'Disabled',
+          after : 'Enable'
+      }
+  },
+  callback: function(res){
+      alert(res);
+  }
 });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div></div><div id="tab-dialog"><h1>Dialog</h1><p>All box methods is calling this method internally.</p><div class="card"><div class="card-content"><span class="card-title">Simple Dialog</span><pre><code class="language-js">mzbox.dialog({
   message: 'Cool hah #1?'
 });</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Alert like dialog</span><pre><code class="language-js">mzbox.dialog({
@@ -270,14 +291,17 @@ this element require manual installation for js and css of
           default: true
       }
   }
-});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Blocked Progress</span><p>The 
-<code>ds</code>
-function is an for demo only internal function so the html not
-renderred by browser for syntax highlighter purpose, while
-<code>mzbox</code>
-know them as html.</p><pre><code class="language-js">let box = mzbox.dialog({
+});</code></pre></div><div class="card-action"><a href="#">Try Me!</a></div></div><div class="card"><div class="card-content"><span class="card-title">Blocked Progress</span><pre><code class="language-js">let progress = document.createElement('div')
+progress.classList.add('progress')
+ 
+let indeterminate = document.createElement('div')
+indeterminate.classList.add('indeterminate')
+ 
+progress.appendChild(indeterminate)
+
+let box = mzbox.dialog({
   dismissible: false,
-  message: ds('&lt;div class="progress"&gt;&lt;div class="indeterminate"&gt;&lt;/div&gt;&lt;/div&gt;')
+  message: progress
 });
  
 setTimeout(function(box){
@@ -339,6 +363,7 @@ key</li></ol></td></tr><tr><td><code>dismissible</code></td><td><code>boolean</c
   // - any of input type
   // - textarea
   // - select 
+  // - switch
   // - checkbox
   // - radio
   "type": "text",
@@ -364,10 +389,16 @@ key</li></ol></td></tr><tr><td><code>dismissible</code></td><td><code>boolean</c
   // materialize form instance options
   "instance": {
   },
+
+  // text label for switch
+  "text": {
+      "before": "Off",
+      "after": "On"
+  }
  
   // preset value
   "value": null
-}</code></pre></td></tr><tr><td><code>init</code></td><td><code>function</code></td><td><code>null</code></td><td><code>*</code></td><td>The box modal ready callback function.</td></tr><tr><td><code>locale</code></td><td><code>string</code></td><td><code>'en'</code></td><td><code>*</code></td><td>Translation to use for translating box buttons.</td></tr><tr><td><code>message</code></td><td><code>string</code></td><td><code>''</code></td><td><code>*</code></td><td>The dialog message text, it also accept html.</td></tr><tr><td><code>title</code></td><td><code>string</code></td><td><code>''</code></td><td><code>*</code></td><td>The dialog title text, it also accept html.</td></tr></tbody></table></div><div id="tab-methods"><h1>Methods</h1><div class="card"><div class="card-content"><span class="card-title"><code>addLocale(name, translation)</code></span><pre><code class="language-js">/**
+}</code></pre></td></tr><tr><td><code>init</code></td><td><code>function</code></td><td><code>null</code></td><td><code>*</code></td><td>The box modal ready callback function.</td></tr><tr><td><code>locale</code></td><td><code>string</code></td><td><code>'en'</code></td><td><code>*</code></td><td>Translation to use for translating box buttons.</td></tr><tr><td><code>message</code></td><td><code>string|dom</code></td><td><code>''</code></td><td><code>*</code></td><td>The dialog message text, it also accept dom element.</td></tr><tr><td><code>title</code></td><td><code>string</code></td><td><code>''</code></td><td><code>*</code></td><td>The dialog title text, it also accept html.</td></tr></tbody></table></div><div id="tab-methods"><h1>Methods</h1><div class="card"><div class="card-content"><span class="card-title"><code>addLocale(name, translation)</code></span><pre><code class="language-js">/**
  * @param string name The language name.
  * @param object translation key-value pair of translation.
  * @return object mzbox

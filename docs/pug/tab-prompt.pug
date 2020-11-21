@@ -220,6 +220,7 @@
                     |   input: {
                     |       type: 'select',
                     |       label: 'Your City',
+                    |       value: 'jakarta',
                     |       options: [
                     |           {
                     |               text : 'Jakarta',
@@ -298,10 +299,6 @@
     .card
         .card-content
             span.card-title Prompt With HTML5 Range
-            
-            p 
-                | This element is not renderred by MaterializeCSS automatically.
-                | And no way to tell MaterializeCSS to render it for now.
             
             pre
                 code.language-js
@@ -414,6 +411,45 @@
                     |           { text: 'Fanta', value: 3 },
                     |           { text: 'Teh Pucuk', value: 4 }
                     |       ]
+                    |   },
+                    |   callback: function(res){
+                    |       alert(res);
+                    |   }
+                    | });
+        
+        .card-action
+            a(href="#") Try Me!
+
+    .card
+        .card-content
+            span.card-title Prompt With Switch
+
+            p
+                | The callback will get
+                |
+                code 1
+                |
+                | for active switch, and
+                |
+                code 0
+                |
+                | for inactive switch. Please compare data type on your logic
+                | for inactive state or user clicking cancel button.
+            
+            pre
+                code.language-js
+                    | mzbox.prompt({
+                    |   title: 'Activate',
+                    |   message: 'Would you like to activate it? #20',
+                    |   input: {
+                    |       attrs: {
+                    |           checked: 'checked'
+                    |       },
+                    |       type: 'switch',
+                    |       text: {
+                    |           before: 'Disabled',
+                    |           after : 'Enable'
+                    |       }
                     |   },
                     |   callback: function(res){
                     |       alert(res);
