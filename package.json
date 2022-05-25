@@ -19,7 +19,7 @@
   },
   "homepage": "https://materialize-bootbox.js.org/",
   "dependencies": {
-    "grunt": "^1.3.0",
+    "grunt": "^1.5.3",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-uglify": "^5.0.0",
     "grunt-contrib-watch": "^1.1.0"
